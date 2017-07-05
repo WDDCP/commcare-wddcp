@@ -4,7 +4,7 @@
 <br> 
 
 ## Workflow and branch structure
-Branch **:dimagi** will be kept up to date with https://github.com/dimagi/commcare-hq by repository owners.
+Branch **:dimagi** will be kept up to date with https://github.com/dimagi/commcare-hq by repository owners. It is locked against Pull Requests, as the only route into it should be by merging from upstream.
 
 Branch **:wddcp** is the default branch for commcare-wddcp, and releases will be made from here. This branch will reflect updates in branch **:dimagi** as closely as possible, and therefore **:wddcp** will be N->inf commits ahead but n->0 commits behind **:dimagi**.
 
