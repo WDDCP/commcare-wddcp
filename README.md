@@ -15,11 +15,10 @@ Branch **:wddcp** is protected, so all Pull Requests should be made into an unpr
 ## Contributions to commcare-wddcp
 Contributors to commcare-wddcp should fork **this** repo (https://github.com/WDDCP/commcare-wddcp), and should make sure their WIP branches are kept up-to-date with branch **:wddcp**.
 
-**N.B.: Ensure submodules are kept up to date**: <br>
-`git submodule update --init --recursive`
-
 ## Quickstart (local)
+### Build
 `vagrant up` Runs from Vagrantfile and provisions everything
+ - This also runs `git submodule update --init --recursive`
 
 `vagrant ssh` Get into new vagrant box 
 
@@ -28,3 +27,9 @@ Contributors to commcare-wddcp should fork **this** repo (https://github.com/WDD
 `./scripts/docker runserver --bootstrap` Build and set up required services 
 
 `./scripts/docker runserver` Run -- available from localhost:8000 
+
+### Development
+- Be in vagrant box
+
+'./scripts/docker bash' For CLI inside appropriate docker image
+
