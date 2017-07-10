@@ -29,7 +29,11 @@ Contributors to commcare-wddcp should fork **this** repo (https://github.com/WDD
 `./scripts/docker runserver` Run -- available from localhost:8000 
 
 ### Development
-- Be in vagrant box
+`vagrant ssh` Be inside vagrant box
 
-'./scripts/docker bash' For CLI inside appropriate docker image
+`./scripts/docker bash` For CLI inside appropriate docker image 
+
+Files are in /mnt/commcare
+
+`./manage.py makemigrations` then `./manage.py migrate
 
