@@ -35,5 +35,5 @@ Contributors to commcare-wddcp should fork **this** repo (https://github.com/WDD
 
 Files are in /mnt/commcare
 
-`./manage.py makemigrations` then `./manage.py migrate
+`./manage.py makemigrations` then `./manage.py migrate`
 
