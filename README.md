@@ -17,6 +17,8 @@ Contributors to commcare-wddcp should fork **this** repo (https://github.com/WDD
 
 ## Quickstart (local)
 ### Build
+In project root on your local machine:
+
 `vagrant up` Runs from Vagrantfile and provisions everything
  - This also runs `git submodule update --init --recursive`
 
@@ -24,16 +26,18 @@ Contributors to commcare-wddcp should fork **this** repo (https://github.com/WDD
 
 `cd /vagrant` Be in the correct folder 
 
+`./scripts/docker bash` Start and enter CLI to appropriate docker image 
+
+`cd /mnt/commcare` Be in the folder where files are
+
+`./manage.py makemigrations` then `./manage.py migrate` to set up django
+
+### Run
+Inside vagrant machine (but not on docker image): 
+
 `./scripts/docker runserver --bootstrap` Build and set up required services 
 
-`./scripts/docker runserver` Run -- available from localhost:8000 
+`./scripts/docker runserver` Application  available from localhost:8000 
 
-### Development
-`vagrant ssh` Be inside vagrant box
 
-`./scripts/docker bash` For CLI inside appropriate docker image 
-
-Files are in /mnt/commcare
-
-`./manage.py makemigrations` then `./manage.py migrate`
 
