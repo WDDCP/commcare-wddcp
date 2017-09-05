@@ -40,6 +40,9 @@ Start CLI to appropriate docker image: <br>
 Be in the folder where files are: <br>
 `cd /mnt/commcare` 
 
+Install Python dependencies: <br>
+`pip install -r requirements/requirements.txt`
+
 Update django models: <br>
 `./manage.py makemigrations` then `./manage.py migrate`
 
