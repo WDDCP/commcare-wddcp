@@ -38,7 +38,7 @@ Start CLI to appropriate docker image: <br>
 `./scripts/docker bash` 
 
 Be in the folder where files are: <br>
-`cd /mnt/commcare` 
+`cd /mnt/commcare-hq`
 
 Update django models: <br>
 `./manage.py makemigrations` then `./manage.py migrate`
