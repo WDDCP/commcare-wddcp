@@ -7,7 +7,7 @@ This is the GitHub repository for WDDCP, comprising an installation of CommCare 
 
 ## Workflow and branch structure
 
-Branch **commcare-wddcp:wddcp** is the main branch for WDDCP, and releases will be made from here. This branch is protected, so all Pull Requests must be approved by a repository owner.
+Branch **commcare-wddcp:wddcp** is the main branch for WDDCP: Pull Requests should be made into this branch, and releases will be made from here. The branch is protected, so all Pull Requests must be approved by a repository owner.
 
 Branch **commcare-wddcp:dimagi** will be kept up to date with **dimagi:commcare-hq:master** by repository owners. It is locked against Pull Requests, as the only route into it should be by merging from upstream. NB: These merges should all be fast-forward: if they're not then something has gone wrong.
 
