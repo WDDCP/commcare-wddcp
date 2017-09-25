@@ -34,13 +34,18 @@ Be in the correct folder: <br>
 `cd /vagrant` 
 
 Build and set up required services: <br>
-`./scripts/docker runserver --bootstrap` 
+`./scripts/docker runserver --bootstrap` <br>
+(You might need to ctrl^c and restart if it hangs...)
 
 ### Run
 Inside vagrant machine:<br>
-`./scripts/docker runserver`
+`./scripts/docker runserver` <br>
 
 ### Further setup
+Get into vagrant box again and be in the project root: <br>
+`vagrant ssh`
+`cd /vagrant`
+
 Start CLI to appropriate docker image: <br>
 `./scripts/docker bash` 
 
@@ -48,9 +53,10 @@ Be in the folder where files are: <br>
 `cd /mnt/commcare-hq`
 
 Update django models: <br>
-`./manage.py makemigrations` then `./manage.py migrate`
+`./manage.py makemigrations` then `./manage.py migrate` <br>
+If this doesn't work then try turning the server off and on again (the `./scripts/docker runserver` step) 
 
-Application should now be available from localhost:8000 (or wherever specified in the `Vagrantfile`)
+**Application should now be available from localhost:8000 (or wherever specified in the `Vagrantfile`)**
 
 
 
