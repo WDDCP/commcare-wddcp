@@ -19,7 +19,7 @@ We aim to take updates from upstream (**dimagi/commcare-hq:master**) into **comm
 Contributors to commcare-wddcp should fork the core WDDCP repo (https://github.com/WDDCP/commcare-wddcp), and should make sure their WIP branches are kept up-to-date with branch **commcare-wddcp:wddcp**.
 
 ## Quickstart (local)
-### Build
+### Build CommCare HQ services
 In project root:<br>
 
 Start Vagrant
@@ -37,11 +37,11 @@ Build and set up required services: <br>
 `./scripts/docker runserver --bootstrap` <br>
 (You might need to ctrl^c and restart if it hangs...)
 
-### Run
+### Run CommCare HQ server
 Inside vagrant machine:<br>
 `./scripts/docker runserver` <br>
 
-### Further setup
+### Set up django
 Get into vagrant box again and be in the project root: <br>
 `vagrant ssh`
 `cd /vagrant`
@@ -58,6 +58,48 @@ If this doesn't work then try turning the server off and on again (the `./script
 
 **Application should now be available from localhost:8000 (or wherever specified in the `Vagrantfile`)**
 
+### Build FormPlayer
+Be in FormPlayer root on vagrant box:
+`cd /vagrant/formplayer`
+
+Update submodules: <br>
+`git submodule update --init --recursive`
+
+Create a settings file from the sample: <br>
+`cp config/application.example.properties config/application.properties`
+
+Install Java APK: <br>
+`sudo apt install --yes openjdk-8-jdk`
+
+Install PostgreSQL: <br>
+`sudo apt-get install postgresql-9.5 postgresql-client-9.5`
+
+Create a postgres user: <br>
+```
+sudo -u postgres createuser commcarehq -SDRP
+Enter password for new role: <commcarehq>
+Enter it again:  <commcarehq>
+```
+Create a formplayer db under the commcarehq user: <br>
+`sudo -u postgres createdb -E UTF-8 -O commcarehq formplayer`
+
+Build with gradlew: <br>
+`./gradlew`
+
+Check the management server and server is actually up and accepting connections before going any further: <br>
+`curl http://127.0.0.1:8081/`  <br>
+{"timestamp":1506094934105,"status":404,"error":"Not Found","message":"/","path":"/"}
+
+`curl http://127.0.0.1:8080` <br>
+{"error":"Invalid session id"}
+
+From @lamby:
+
+settings.BASE_ADDRESS in commcare must match what you are accessing the site via in the browser. ie. you cannot have a config.vm.network "forwarded_port", guest: 8000, host: X in your Vagrantfile where X does not match the port mentioned in settings.BASE_ADDRESS in your localsettings. This is due to the commcare Javascript sending an Access-Control-Allow-Origin header of settings.BASE_ADDRESS which violates CORS <https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS>__ restrictions in modern browsers.
+
+Be especially aware that changing the port of BASE_ADDRESS in localsettings.py does not actually work. I've yet to discover why but even after re-running the docker initialisation, whilst adding debugging statements to settings.py will happily print the modified value, if you then query settings.BASE_ADDRESS at runtime at all (eg. just dump some print in an already-existing middleware.) it prints an empty string (whut).
+
+Therefore I currently suggest setting guest: 8000, host: 8000. This avoids having to change commcarehq.host=http://localhost:8000 to, say, commcarehq.host=http://localhost:2345 too.
 
 
 
