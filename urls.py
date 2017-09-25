@@ -1,4 +1,5 @@
 from __future__ import absolute_import
+from django import VERSION
 from django.conf import settings
 from django.conf.urls import url, include
 from django.shortcuts import render
@@ -164,10 +165,16 @@ if settings.ENABLE_PRELOGIN_SITE:
 if settings.DEBUG:
     try:
         from debug_toolbar import urls as debug_toolbar_urls
-        urlconf_module, app_name, namespace = debug_toolbar_urls
-        urlpatterns += [
-            url(r'^__debug__/', include((urlconf_module, app_name), namespace=namespace)),
-        ]
+
+        if VERSION < (1, 9):
+            urlconf_module, app_name, namespace = debug_toolbar_urls
+            urlpatterns += [
+                url(r'^__debug__/', include((urlconf_module, app_name), namespace=namespace)),
+            ]
+        else:
+            urlpatterns += [
+                url(r'^__debug__/', include(debug_toolbar_urls)),
+            ]
     except ImportError:
         pass
 
