@@ -18,6 +18,11 @@ We aim to take updates from upstream (**dimagi/commcare-hq:master**) into **comm
 ## Contributions to commcare-wddcp
 Contributors to commcare-wddcp should fork the core WDDCP repo (https://github.com/WDDCP/commcare-wddcp), and should make sure their WIP branches are kept up-to-date with branch **commcare-wddcp:wddcp**.
 
+------
+Here is a very rough (and probably inaccurate) diagram of what Helen thinks is happening on the platform:
+<img src="https://user-images.githubusercontent.com/2399432/30828680-59f9366e-a236-11e7-97bd-aee7acd813b4.jpg" width="500px" />
+
+
 ## Quickstart (local)
 ### Build CommCare HQ services
 In project root:<br>
