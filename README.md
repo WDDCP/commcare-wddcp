@@ -56,7 +56,10 @@ Update django models: <br>
 `./manage.py makemigrations` then `./manage.py migrate` <br>
 If this doesn't work then try turning the server off and on again (the `./scripts/docker runserver` step) 
 
-**Application should now be available from localhost:8000 (or wherever specified in the `Vagrantfile`)**
+**The application should now be available from localhost:8000 (or wherever specified in the `Vagrantfile`)**
+ * username: admin@example.com
+ * password: password
+ * (domain: demo -- I don't know where this is used yet)
 
 ### Build FormPlayer
 Be in FormPlayer root on vagrant box:
