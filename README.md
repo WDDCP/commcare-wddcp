@@ -36,6 +36,10 @@ Be in the correct folder: <br>
 Build and set up required services: <br>
 `./scripts/docker runserver --bootstrap` 
 
+### Run
+Inside vagrant machine:<br>
+`./scripts/docker runserver`
+
 ### Further setup
 Start CLI to appropriate docker image: <br>
 `./scripts/docker bash` 
@@ -46,9 +50,8 @@ Be in the folder where files are: <br>
 Update django models: <br>
 `./manage.py makemigrations` then `./manage.py migrate`
 
-### Run
-Inside vagrant machine (but not on docker image):<br>
-`./scripts/docker runserver` Application  available from localhost:8000 
+Application should now be available from localhost:8000 (or wherever specified in the `Vagrantfile`)
+
 
 
 
